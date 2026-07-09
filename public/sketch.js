@@ -379,8 +379,8 @@ function checkSound(counter, index) {
 
 // creates an Effect.  Should really return it, but it's being assigned to a global
 function createSpecialEffect() {
-  //m_specialEffect = new HeartImages(createVector(width/2, height/2-100), 240);
-  //return;
+  m_specialEffect = new HeartImages(createVector(width/2, height/2-100), 240);
+  return;
 
   const rd = random();
   if      (rd < 0.20) m_specialEffect = new EffectFireworks(300);
@@ -450,6 +450,11 @@ function createCardArrayFromServerData(data) {
     card.copyFromServerData(c);
     m_discards.push(card);
   }
+}
+
+function resetServer() {
+  let data = {};
+  m_socket.emit('resetServer', data);
 }
 
 // emit all the players and the table to the server
